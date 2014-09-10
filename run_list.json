@@ -1,0 +1,6 @@
+{
+  "name":"nexpose-server",
+  "run_list": [
+    "recipe[nexpose]"
+  ]
+}

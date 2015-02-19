@@ -20,7 +20,7 @@ ADD . /chef
 RUN cd /chef && /opt/chef/embedded/bin/berks vendor /chef/cookbooks
 
 #SET file permissions of screen folder (to fix weird behaviour by chef)
-RUN chmod 777 /var/run/screen
+RUN chmod 775 /var/run/screen
 
 #INSTALL nexpose cookbook
 RUN chef-solo -c /chef/file_paths.rb -j /chef/run_list.json

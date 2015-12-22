@@ -27,4 +27,19 @@ nexpose probably hasn't finished setting up all its stuff yet which is why you c
   * default username/password is nxadmin/nxadmin
   * will need to active community license here etc.
 
+###LICENSING
+Nexpose needs a license to work. To get one, get through their downloading process on the [Rapid7's website](http://www.rapid7.com/products/nexpose/compare-downloads.jsp).
+Licensing must be done through the web interface, but then, it can be save inside a new docker image.
+
+```bash
+# once the licensing is done, save the new image
+docker commit nexpose_container nexpose_licensed
+
+# from now on, use the new image to run nexpose
+docker run \
+  --name nexpose_container \
+  -p 49160:3780 \
+  -d nexpose_licensed
+```
+
 NB: can pass different configs to chef to set different defaults etc.

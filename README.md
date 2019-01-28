@@ -1,6 +1,6 @@
-[![](https://badge.imagelayers.io/whithajess/dockernexpose:latest.svg)](https://imagelayers.io/?images=whithajess/dockernexpose:latest 'Get your own badge on imagelayers.io')
 DockerNexpose
 =============
+[![](https://badge.imagelayers.io/whithajess/dockernexpose:latest.svg)](https://imagelayers.io/?images=whithajess/dockernexpose:latest 'Get your own badge on imagelayers.io')
 
 Uses the nexpose chef cookbook to create a nexpose docker container
 
@@ -21,7 +21,8 @@ sudo docker run \
 ```
 
 ### Check State
-nexpose probably hasn't finished setting up all its stuff yet which is why you cant log in anyway docker attach $PID should show you wtf its up to docker ps will show running
+Nexpose takes awhile to set up all its stuff.
+`docker attach $PID` should show you where its up to.
 
 ### Log In
   * use your local browser port 49160: https://localhost:49160/
@@ -43,4 +44,4 @@ docker run \
   -d nexpose_licensed
 ```
 
-*NB:* can pass different configs to chef to set different defaults etc.
+***NB:*** can pass different configs to chef to set different defaults etc.

@@ -1,10 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 MAINTAINER Jesse Whitham "jesse.whitham@gmail.com"
 
 #INSTALL necessary packages for install 
 #NB: -y flag assumes yes when apt asks if you want to install the other packages needed
-RUN apt-get update
-RUN apt-get install -y curl build-essential libxml2-dev libxslt-dev git screen
+RUN apt-get update && apt-get install -y sudo curl build-essential libxml2-dev libxslt-dev git screen && rm -rf /var/lib/apt/lists/*
 
 #INSTALL chef (for nexpose cookbook install)
 RUN curl -L https://www.opscode.com/chef/install.sh | sudo bash
@@ -20,7 +19,7 @@ ADD . /chef
 RUN cd /chef && /opt/chef/embedded/bin/berks vendor /chef/cookbooks
 
 #SET file permissions of screen folder (to fix weird behaviour by chef)
-RUN chmod 775 /var/run/screen
+RUN chmod 777 /var/run/screen
 
 #INSTALL nexpose cookbook
 RUN chef-solo -c /chef/file_paths.rb -j /chef/run_list.json
